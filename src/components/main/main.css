@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+
+}
+.main {
+  color: #fff;
+  display: flex;
+  margin-top: 10px;
+}
+.chips-wrapper {
+  display: block;
+  overflow-x: scroll;
+}
+.chips {
+  background-color: #272727;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 10px;
+
+}
+.chips.active {
+  background-color: #f1f1f1;
+}

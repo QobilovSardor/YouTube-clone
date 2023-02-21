@@ -17,11 +17,13 @@ function Main() {
       </div>
       <Search />
       <div className="user-account">
-        <div className='hover-icon'>
+        <div className='hover-icon tooltip'>
           <BiVideoPlus />
+          <p className='tooltiptext'>Create</p>
         </div>
-        <div className='hover-icon notification'>
+        <div className='hover-icon notification tooltip'>
           <IoMdNotifications />
+          <p className='tooltiptext'>Notifications</p>
           <span className='badge'>9+</span>
         </div>
         <div>
