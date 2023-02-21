@@ -1,8 +1,11 @@
 .left-sidebar {
   padding: 10px 20px;
-  width: 15%;
+  min-width: 15%;
   color: white;
   overflow-y: scroll;
+  position: fixed;
+  background-color: #0f0f0f;
+  height: 100%;
 }
 .box {
   display: flex;

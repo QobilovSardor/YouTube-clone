@@ -8,7 +8,7 @@ svg {
   justify-content: space-between;
   background-color: #0f0f0f;
   padding: 10px 20px;
-  position: sticky;
+  position: fixed;
   width: 100%;
 }
 .header-bars__icons {
