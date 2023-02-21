@@ -1,5 +1,6 @@
 import {BsSearch} from 'react-icons/bs';
-import {MdKeyboardVoice} from 'react-icons/md'
+import {MdKeyboardVoice} from 'react-icons/md';
+import './search.css';
 
 function Search() {
   return (

@@ -12,7 +12,7 @@ function Main() {
       <div className="header-icons">
         <FaBars className='header-bars__icons' />
         <Link to='/'>
-          <img src="./images/yt-logo.png" alt="youtube-loog" width='90px' height='20px' />
+          <img src="../images/yt-logo.png" alt="youtube-loog" width='90px' height='20px' />
         </Link>
       </div>
       <Search />
