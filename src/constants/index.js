@@ -1,5 +1,6 @@
 export const category = [
-  { name: 'New' },
+	{name: 'All'},
+	{ name: 'New' },
 	{ name: 'Movie' },
 	{ name: 'Live' },
 	{ name: 'Gaming' },

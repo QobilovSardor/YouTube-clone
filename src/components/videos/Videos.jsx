@@ -1,14 +1,18 @@
 import React from 'react';
-import VideoCards from '../video-cards/VideoCards';
-import './videos.css'
+import { Loader, Chanel, VideoCards } from '../index';
+import './videos.css';
 
 function Videos({videos = []}) {
+  if(!videos.length) {
+    <Loader />
+  }
   return (
     <div className='videos'>
-      {videos.map(item => (
-        <React.StrictMode key={item.id.videoId}>
+      {videos.map((item, idx) => (
+        <div key={idx}>
           {item.id.videoId && <VideoCards video={item} />}
-        </React.StrictMode>
+          {item.id.chanelId && <Chanel item={item}/>}
+        </div>
       ))}
     </div>
   )

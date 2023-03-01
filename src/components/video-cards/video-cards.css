@@ -1,0 +1,35 @@
+.video-card{
+    cursor: pointer;
+}
+.video-title {
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: white;
+}
+.video-data {
+    color: gray;
+    font-size: 14px;
+}
+.content p:nth-child(2) {
+    margin-top: 10px;
+}
+.d-flex {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    margin-top: 10px;
+}
+.account-img {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}

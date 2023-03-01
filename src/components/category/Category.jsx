@@ -1,14 +1,16 @@
 import { category } from '../../constants';
 import { useState } from 'react';
 
-function Category() {
-
-  const [selectedCategory, setselectedCategory] = useState('All');
+function Category({selectedCategoryHandler, selectedCategory}) {
 
   return (
       <div className="chips-wrapper">
         {category.map(item => (
-          <button className='chips' key={item.name}>{item.name}</button>
+          <button
+              className='chips'
+              key={item.name}
+              style={{background: item.name === selectedCategory && 'white', color: item.name === selectedCategory && 'black'}}
+              onClick={() => selectedCategoryHandler(item.name)}>{item.name}</button>
         ))}
     </div>
   );

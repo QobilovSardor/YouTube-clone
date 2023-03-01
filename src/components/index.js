@@ -8,4 +8,5 @@ export {default as Main} from './main/Main';
 export {default as LeftSidebar} from './left-sidebar/LeftSidebar';
 export {default as Category} from './category/Category';
 export {default as Videos} from './videos/Videos';
-export {default as VideoCards} from './video-cards/VideoCards'
+export {default as VideoCards} from './video-cards/VideoCards';
+export {default as Loader} from './loader/Loader';

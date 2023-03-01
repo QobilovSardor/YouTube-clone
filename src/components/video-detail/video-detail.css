@@ -1,0 +1,46 @@
+.video-datail__wrapper {
+  padding: 100px 20px;
+}
+.video-title {
+  color: white;
+  word-break: break-word;
+  font-family: "YouTube Sans","Roboto",sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  overflow: hidden;
+  display: inline-block;
+  -webkit-line-clamp: 2;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.video-data {
+  display: flex;
+  justify-content: space-between;
+}
+.account-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.video-detail__left-sidebar {
+  width: 65%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.like-icon {
+  color: white;
+}
+.like-box {
+  cursor: pointer;
+  color: white;
+}
+.d-flex {
+  display: flex;
+  align-items: center !important;
+  color: white;
+  margin-top: 0 !important;
+}
