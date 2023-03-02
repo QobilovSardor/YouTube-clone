@@ -35,8 +35,6 @@ function VideoDetail() {
     getData();
   }, [id])
 
-  console.log(videoDetail);
-
   if (!videoDetail?.snippet) return <h2 style={{color: 'white'}}>Loading...</h2>
 
   return (
