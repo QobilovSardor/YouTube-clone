@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Apiservice } from "../../services/api-services";
