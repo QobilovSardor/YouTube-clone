@@ -1,11 +1,11 @@
 .video-datail__wrapper {
   padding: 100px 20px;
 }
-.video-title {
+.video-datail__wrapper .video-title {
   color: white;
   word-break: break-word;
   font-family: "YouTube Sans","Roboto",sans-serif;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 600;
   overflow: hidden;
   display: inline-block;
@@ -15,6 +15,7 @@
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: normal;
+  margin-top: 10px;
 }
 .video-data {
   display: flex;
@@ -34,13 +35,42 @@
 .like-icon {
   color: white;
 }
-.like-box {
+.d-flex.like-box {
   cursor: pointer;
   color: white;
+  background-color: #272727;
+  padding: 10px;
+  border-radius: 50px;
+  gap: 5px;
 }
 .d-flex {
   display: flex;
   align-items: center !important;
   color: white;
-  margin-top: 0 !important;
+  /* margin-top: 0 !important; */
+}
+.video-datail__wrapper .video-description {
+  background-color: #272727;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  contain: content;
+  font-family: "Roboto","Arial",sans-serif;
+  line-height: 24px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+.video-coments {
+  vertical-align: middle;
+  font-family: "Roboto","Arial",sans-serif;
+  font-size: 20px;
+  line-height: 2.2rem;
+  font-weight: 400;
+  color: white;
+}
+.foo a {
+  color: #3ea6ff; 
 }

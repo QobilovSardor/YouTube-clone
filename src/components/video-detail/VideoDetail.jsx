@@ -4,16 +4,29 @@ import { Apiservice } from "../../services/api-services";
 import ReactPlayer from "react-player";
 import './video-detail.css';
 import {AiFillLike} from 'react-icons/ai';
+import {AiFillDislike} from 'react-icons/ai'
+import Numeric_label from "react-pretty-numbers";
+import Linkify from 'react-linkify';
+import Videos from "../videos/Videos";
 
 function VideoDetail() {
   const [videoDetail, setVideoDetail] = useState(null);
+  const [relatedToVideo, setRelatedToVideo] = useState([])
+  const [videoDescription, setVideoDescription] = useState(false);
   const {id} = useParams();
+
+  function descr() {
+    setVideoDescription(!videoDescription)
+  }
   
   useEffect(() => {
     const getData = async () => {
       try {
         const data = await Apiservice.fetching(`videos?part,snippet,statistics&id=${id}`)
         setVideoDetail(data.data.items[0])
+        const relatedData = await Apiservice.fetching(`search?part=snippet&relatedToVideoId=${id}&type=video`)
+        setRelatedToVideo(relatedData.item);
+        console.log(relatedData);
       } catch (error) {
         console.log(error);
       }
@@ -22,7 +35,11 @@ function VideoDetail() {
   }, [id])
 
   console.log(videoDetail);
+
+  if (!videoDetail?.snippet) return <h2 style={{color: 'white'}}>Loading...</h2>
+
   return (
+    
     <div className="video-datail__wrapper">
       <div className='video-detail__left-sidebar'>
       <ReactPlayer
@@ -41,10 +58,35 @@ function VideoDetail() {
         </div>
         <div className='d-flex like-box'>
           <AiFillLike />
-          <span>{videoDetail?.statistics?.likeCount.slice(0, 3)}K</span>
+          <span></span>
+          <span>
+            <Numeric_label params={{ commafy:true, shortFormat: true, justification: 'L'}}>{videoDetail?.statistics?.likeCount}</Numeric_label>
+          </span>
+          |
+          <AiFillDislike />
         </div>
       </div>
+      <div className="video-description" onClick={descr}>
+        <p  className='foo'>
+          <Linkify>
+          {videoDescription ? videoDetail?.snippet?.localized?.description : videoDetail?.snippet?.localized?.description.slice(0,200)+'...'}
+          </Linkify>
+        </p>
       </div>
+      <div className="video-statistics d-flex">
+        <h3 className="video-coments">
+          <Numeric_label params={{ commafy:true, shortFormat: true, justification: 'L'}}>
+            {videoDetail?.statistics?.commentCount ? videoDetail?.statistics?.commentCount : null}
+          </Numeric_label> Comment count
+        </h3>
+        <h3 className="video-coments">
+          <Numeric_label params={{ commafy:true, shortFormat: true, justification: 'L'}}>
+            {videoDetail?.statistics?.viewCount ? videoDetail?.statistics?.viewCount : null}
+          </Numeric_label> View count
+        </h3>
+      </div>
+      </div>
+      {/* <Videos videos={relatedToVideo}/> */}
     </div>
   );
 }
