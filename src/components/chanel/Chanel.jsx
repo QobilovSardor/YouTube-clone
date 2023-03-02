@@ -1,52 +1,48 @@
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import {LeftSidebar, Videos} from '../';
+import { Apiservice } from '../../services/api-services';
+import './chanel.css';
+import Numeric_label from "react-pretty-numbers";
 
-import { Link } from 'react-router-dom'
 
-const ChannelCard = ({ video, marginTop }) => {
+const ChannelCard = () => {
+	const [chanelDetail, setChanelDetail] = useState([]);
+	const [videos, setVideos] = useState();
+	const {id} = useParams();
+
+	useEffect(() => {
+		const getData = async () => {
+			try {
+				const dataChanel = await Apiservice.fetching(`channels?part=snippet&id=${id}`);
+				setChanelDetail(dataChanel.data.items[0])
+				const videoDetail = await Apiservice.fetching(`search?channelId=${id}&part=snippet`);
+				setVideos(videoDetail.data.items)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getData();
+	}, [id])
 	return (
-		<div
-			sx={{
-				boxShadow: 'none',
-				borderRadius: '20px',
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				width: { xs: '356px', md: '320px' },
-				height: '326px',
-				margin: 'auto',
-				marginTop: marginTop,
-			}}
-		>
-			<Link to={`/channel/${video?.id.channelId ? video?.id.channelId : video?.id}`}>
-				<div
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-						textAlign: 'center',
-					}}
-				>
-					<div
-						image={video?.snippet?.thumbnails?.high?.url}
-						alt={video?.snippet?.title}
-						sx={{
-							borderRadius: '50%',
-							height: '180px',
-							width: '180px',
-							mb: 2,
-							border: '1px solid #e3e3e3',
-						}}
-					/>
-					<div variant={'h6'}>
-						{video?.snippet?.title}{' '}
-						<div sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
+		<div>
+			<LeftSidebar />
+			<div className='chanel'>
+				<img src={chanelDetail?.brandingSettings?.image.bannerExternalUrl} alt="chanelImg" className='chanel-img' />
+
+				<div className="chanel-acount">
+					<img src={chanelDetail?.snippet?.thumbnails?.default.url} alt="chanel-acount" />
+					<div className="chanel-acount__content">
+						<h3>{chanelDetail?.snippet?.localized.title}</h3>
+						<span className='text-muted'>{chanelDetail?.snippet?.customUrl}</span>
+						<span className='text-muted'>
+						<Numeric_label params={{ commafy:true, shortFormat: true, justification: 'L'}}>{chanelDetail?.statistics?.subscriberCount}</Numeric_label> &nbsp;
+						subscribers
+						</span>
 					</div>
-					{video?.statistics?.subscriberCount && (
-						<div sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
-							{parseInt(video?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
-						</div>
-					)}
 				</div>
-			</Link>
+					<Videos videos={videos} />
+			</div>
 		</div>
 	)
 }

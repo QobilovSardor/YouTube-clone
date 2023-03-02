@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Apiservice } from "../../services/api-services";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player"; 
 import './video-detail.css';
 import {AiFillLike} from 'react-icons/ai';
 import {AiFillDislike} from 'react-icons/ai'
@@ -25,8 +25,8 @@ function VideoDetail() {
         const data = await Apiservice.fetching(`videos?part,snippet,statistics&id=${id}`)
         setVideoDetail(data.data.items[0])
         const relatedData = await Apiservice.fetching(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-        setRelatedToVideo(relatedData.item);
-        console.log(relatedData);
+        setRelatedToVideo(relatedData.data.items);
+        console.log(relatedData.data.items);
       } catch (error) {
         console.log(error);
       }
@@ -52,10 +52,12 @@ function VideoDetail() {
       />
       <p className='video-title'>{videoDetail?.snippet?.title}</p>
       <div className="d-flex video-data">
-        <div className='d-flex'>
-          <img src={videoDetail?.snippet?.thumbnails.medium.url} alt="account-img" className='account-image' />
-          <h3>{videoDetail?.snippet?.channelTitle}</h3>
-        </div>
+        <Link to={`chanel/${videoDetail?.snippet.channelId}`}>
+          <div className='d-flex'>
+            <img src={videoDetail?.snippet?.thumbnails.medium.url} alt="account-img" className='account-image' />
+            <h3>{videoDetail?.snippet?.channelTitle}</h3>
+          </div>
+        </Link>
         <div className='d-flex like-box'>
           <AiFillLike />
           <span></span>
@@ -86,7 +88,7 @@ function VideoDetail() {
         </h3>
       </div>
       </div>
-      {/* <Videos videos={relatedToVideo}/> */}
+      <Videos videos={relatedToVideo}/>
     </div>
   );
 }

@@ -1,0 +1,37 @@
+.chanel {
+  color: #fff;
+  padding: 0 20px;
+  min-width: 85%;
+  margin-left: 15%;
+  padding-top: 60px;
+}
+.chanel .chanel-img {
+  width: 100%;
+  height: calc((100vw - 240px)/6.2 - 1px);
+  object-fit: cover;
+}
+.chanel-acount {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 16px 107px 4px;
+}
+.chanel-acount img {
+  border-radius: 50%;
+}
+.chanel-acount .text-muted {
+  color: #aaa;
+  font-family: "Roboto","Arial",sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  display: block;
+}
+.chanel-acount h3 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--ytd-channel-name-text-line-clamp,inherit);
+  word-break: break-word;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 7px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader, Chanel, VideoCards } from '../index';
+import { Loader, Chanel , VideoCards } from '../index';
 import './videos.css';
 
 function Videos({videos = []}) {
@@ -11,7 +11,7 @@ function Videos({videos = []}) {
       {videos.map((item, idx) => (
         <div key={idx}>
           {item.id.videoId && <VideoCards video={item} />}
-          {item.id.chanelId && <Chanel item={item}/>}
+          {item.id.chanelId && <Chanel video ={item}/>}
         </div>
       ))}
     </div>
